@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="HelloCicd.Api/HelloCicd.Api.csproj" />
+  <Project Path="HelloCicd.Tests/HelloCicd.Tests.csproj" />
+</Solution>

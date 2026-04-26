@@ -1,0 +1,6 @@
+@HelloCicd.Api_HostAddress = http://localhost:5177
+
+GET {{HelloCicd.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
