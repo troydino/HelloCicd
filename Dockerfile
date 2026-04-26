@@ -21,10 +21,9 @@ RUN dotnet publish HelloCicd.Api/HelloCicd.Api.csproj \
 FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
 WORKDIR /app
 
-RUN adduser --disabled-password --gecos "" appuser && chown -R appuser /app
-USER appuser
+USER app
 
-COPY --from=build /app/publish .
+COPY --from=build --chown=app /app/publish .
 
 EXPOSE 8080
 
