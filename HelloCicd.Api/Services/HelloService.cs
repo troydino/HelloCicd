@@ -1,5 +1,5 @@
 ﻿using HelloCicd.Api.Models;
-using System.ComponentModel.Design;
+using System.Reflection;
 
 namespace HelloCicd.Api.Services;
 
@@ -11,6 +11,11 @@ public sealed class HelloService : IHelloService
     /// <inheritdoc />
     public HelloResponse GetHello()
     {
-        return new HelloResponse("Hello, World!", DateTime.UtcNow);
+        var version = Assembly.GetExecutingAssembly()
+            .GetName()
+            .Version?
+            .ToString() ?? "unknown";
+
+        return new HelloResponse("Hello, World!", version, DateTime.UtcNow);
     }
 }
