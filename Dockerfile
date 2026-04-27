@@ -21,19 +21,12 @@ RUN dotnet publish HelloCicd.Api/HelloCicd.Api.csproj \
 FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
 WORKDIR /app
 
-<<<<<<< HEAD
 ARG APP_ENVIRONMENT=Docker
 ENV AppEnvironment=$APP_ENVIRONMENT
 
 USER app
 
 COPY --from=build --chown=app /app/publish .
-=======
-RUN adduser --disabled-password --gecos "" appuser && chown -R appuser /app
-USER appuser
-
-COPY --from=build /app/publish .
->>>>>>> ab34715 (Add Dockerfile, .dockerignore and CI pipeline)
 
 EXPOSE 8080
 
