@@ -36,4 +36,4 @@ jobs:
 
       - name: Trigger Render deploy
         run: |
-          curl -f "${{ secrets.RENDER_DEPLOY_HOOK }}&env[THIRD_PARTY_API_KEY]=${{ secrets.THIRD_PARTY_API_KEY }}"
+          curl --globoff -f "${{ secrets.RENDER_DEPLOY_HOOK }}&env[THIRD_PARTY_API_KEY]=${{ secrets.THIRD_PARTY_API_KEY }}"
