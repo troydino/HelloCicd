@@ -20,6 +20,19 @@ public sealed class HelloServiceTests
     }
 
     [Fact]
+    public void GetHello_WhenCalled_ReturnsVersion()
+    {
+        // Arrange - done in constructor
+
+        // Act
+        var result = _sut.GetHello();
+
+        // Assert
+        Assert.NotNull(result.Version);
+        Assert.NotEmpty(result.Version);
+    }
+
+    [Fact]
     public void GetHello_WhenCalled_ReturnsTimestamp()
     {
         // Arrange

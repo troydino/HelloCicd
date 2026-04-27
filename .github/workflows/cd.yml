@@ -31,3 +31,7 @@ jobs:
           tags: |
             ghcr.io/troydino/hellocicd:latest
             ghcr.io/troydino/hellocicd:${{ github.sha }}
+
+      - name: Trigger Render deploy
+        run: |
+          curl -f "${{ secrets.RENDER_DEPLOY_HOOK }}"
