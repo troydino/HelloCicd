@@ -3,4 +3,4 @@
 /// <summary>
 /// Represents the response from the Hello endpoint.
 /// </summary>
-public sealed record HelloResponse(string Message, string Version, DateTime Timestamp);
+public sealed record HelloResponse(string Message, string Version, string AppEnvironment, DateTime Timestamp);
