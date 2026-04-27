@@ -25,10 +25,7 @@ jobs:
         run: dotnet build --no-restore -c Release
 
       - name: Test with coverage
-        run: dotnet test --no-restore --no-build -c Release --verbosity normal \
-          /p:CollectCoverage=true \
-          /p:CoverletOutputFormat=lcov \
-          /p:CoverletOutput=./coverage/lcov.info
+        run: dotnet test --no-restore --no-build -c Release --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=./coverage/lcov.info
 
       - name: Upload coverage report
         uses: coverallsapp/github-action@v2
