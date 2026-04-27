@@ -8,14 +8,30 @@ namespace HelloCicd.Api.Services;
 /// </summary>
 public sealed class HelloService : IHelloService
 {
+    private readonly IConfiguration _configuration;
+
+    public HelloService(IConfiguration configuration)
+    {
+        _configuration = configuration;
+    }
+
     /// <inheritdoc />
     public HelloResponse GetHello()
     {
-        var version = Assembly.GetExecutingAssembly()
-            .GetName()
-            .Version?
-            .ToString() ?? "unknown";
+        try
+        {
+            var version = Assembly.GetExecutingAssembly()
+                .GetName()
+                .Version?
+                .ToString() ?? "unknown";
 
-        return new HelloResponse("Hello, World!", version, DateTime.UtcNow);
+            var appEnvironment = _configuration["AppEnvironment"] ?? "unknown";
+
+            return new HelloResponse("Hello, World!", version, appEnvironment, DateTime.UtcNow);
+        }
+        catch (Exception ex)
+        {
+            throw new InvalidOperationException("Failed to build hello response.", ex);
+        }
     }
 }
