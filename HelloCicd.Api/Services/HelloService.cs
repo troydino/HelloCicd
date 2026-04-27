@@ -26,8 +26,9 @@ public sealed class HelloService : IHelloService
                 .ToString() ?? "unknown";
 
             var appEnvironment = _configuration["AppEnvironment"] ?? "unknown";
+            var apiKeyPresent = !string.IsNullOrEmpty(_configuration["THIRD_PARTY_API_KEY"]);
 
-            return new HelloResponse("Hello, World!", version, appEnvironment, DateTime.UtcNow);
+            return new HelloResponse("Hello, World!", version, appEnvironment, apiKeyPresent, DateTime.UtcNow);
         }
         catch (Exception ex)
         {
