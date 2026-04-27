@@ -21,7 +21,7 @@ RUN dotnet publish HelloCicd.Api/HelloCicd.Api.csproj \
 FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
 WORKDIR /app
 
-ARG APP_ENVIRONMENT=Production
+ARG APP_ENVIRONMENT=Docker
 ENV AppEnvironment=$APP_ENVIRONMENT
 
 USER app
